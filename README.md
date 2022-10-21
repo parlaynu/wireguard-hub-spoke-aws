@@ -73,9 +73,9 @@ You will need to manually undo anything done on the spoke gateways.
 
 ### Testing
 
-To check the IP address that the spoke servers appear to for the outside world, run:
+Check your routing with:
 
-    dig @resolver1.opendns.com myip.opendns.com
+    traceroute -n 1.1.1.1
 
-If all has worked, this will return the IP address of the VPN hub server.
+The output should show you traffic running via your hub.
 
