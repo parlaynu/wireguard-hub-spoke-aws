@@ -60,6 +60,7 @@ resource "local_file" "hostvars_spoke" {
 
   content = templatefile("templates/ansible/hostvars_spoke.yml.tpl", {
     host_name = each.key
+    host_gateway = each.value.net_gateway
     host_ifname = each.value.ifname
     host_ip = each.value.access_ip
     
@@ -68,9 +69,10 @@ resource "local_file" "hostvars_spoke" {
     vpn_ip = local.vpn_spoke_ips[each.key],
     vpn_private_key = wireguard_asymmetric_key.vpn_spokes[each.key].private_key,
 
-    vpn_server_endpoint = aws_instance.hub.public_ip,
-    vpn_server_port = var.vpn_port,
-    vpn_server_public_key = wireguard_asymmetric_key.vpn_hub.public_key,
+    vpn_hub_vpn_ip = local.vpn_hub_ip
+    vpn_hub_endpoint = aws_instance.hub.public_ip,
+    vpn_hub_port = var.vpn_port,
+    vpn_hub_public_key = wireguard_asymmetric_key.vpn_hub.public_key,
   })
 
   filename        = "local/ansible/host_vars/${each.key}.yml"

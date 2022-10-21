@@ -41,9 +41,9 @@
   notify:
     - restart wireguard
 
-- name: start wireguard
-  systemd:
-    name: wg-quick@wg0
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
+# - name: start wireguard
+#   systemd:
+#     name: wg-quick@wg0
+#     state: restarted
+#     enabled: yes
+#     daemon_reload: yes

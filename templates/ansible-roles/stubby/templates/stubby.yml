@@ -189,5 +189,5 @@ listen_addresses:
 upstream_recursive_servers:
 {% for server in stubby_upstream_servers %}
  - address_data: {{ server.ip_address }}
-   tls_auth_name: {{ server.tls_auth_name }}
+   tls_auth_name: "{{ server.tls_auth_name }}"
 {% endfor %}

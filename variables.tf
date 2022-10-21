@@ -66,6 +66,7 @@ locals {
 variable "spokes" {
   type = map(object({
     access_ip = string
+    net_gateway = string
     ifname = string
     username = string
     ssh_key_file = string
@@ -73,12 +74,14 @@ variable "spokes" {
   default = {
     spoke1 = {
       access_ip = "192.168.0.23"
+      net_gateway = "192.168.0.1"
       ifname = "eth0"
       username = "ubuntu"
       ssh_key_file = "~/.ssh/spoke1"
     },
     spoke2 = {
       access_ip = "192.168.10.11"
+      net_gateway = "192.168.10.1"
       ifname = "eth0"
       username = "ubuntu"
       ssh_key_file = "~/.ssh/spoke2"
