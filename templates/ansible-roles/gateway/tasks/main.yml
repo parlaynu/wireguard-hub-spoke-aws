@@ -1,0 +1,46 @@
+## install packages
+
+- name: install net-tools
+  apt:
+    name: net-tools
+    state: present
+
+- name: install dnsutils
+  apt:
+    name: dnsutils
+    state: present
+
+- name: install traceroute
+  apt:
+    name: traceroute
+    state: present
+
+## configure as a router
+
+- name: enable packet forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+
+- name: enable secure redirects
+  sysctl:
+    name: net.ipv4.conf.all.secure_redirects
+    value: 1
+
+- name: disable accept redirects
+  sysctl:
+    name: net.ipv4.conf.all.accept_redirects
+    value: 0
+
+- name: disable source routing
+  sysctl:
+    name: net.ipv4.conf.all.accept_source_route
+    value: 0
+
+- name: disable send redirects
+  sysctl:
+    name: net.ipv4.conf.all.send_redirects
+    value: 0
+
+
+

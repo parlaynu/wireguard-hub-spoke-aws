@@ -1,0 +1,13 @@
+# local working files
+local/
+
+# terraform state
+*.tfvars
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.*
+
+# OS files
+.DS_Store
+
