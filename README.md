@@ -1,5 +1,12 @@
 # 
 
+
+## Network
+
+The built network looks like this:
+
+![](images/network.png)
+
 ## Running The Playbook
 
 To configure all machines, run:
