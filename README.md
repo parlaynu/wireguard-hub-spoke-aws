@@ -10,7 +10,10 @@ The hub is built on AWS and listens for VPN connections from the spoke sites. Th
 to be built outside this project and configured to the point where ssh access using a private key works.
 The project configures them to forward traffic and installs and configures wireguard.
 
-All operating systems I've used are debian based - Ubuntu and RaspberryPi OS.
+The operating systems I have used are:
+
+- hub: Ubuntu 22.04 LTS
+- spoke: Raspberry Pi OS Lite 64bit, 22-09-2022
 
 [Terraform](https://www.terraform.io/) is used to create the infrastructure.
 
