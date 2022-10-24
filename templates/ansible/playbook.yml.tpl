@@ -9,6 +9,9 @@
   tasks:
   - import_role:
       name: ${gateway_role}
+
+  - import_role:
+      name: ${iptables_role}
     
   - import_role:
       name: ${stubby_role}
@@ -27,6 +30,9 @@
   - import_role:
       name: ${gateway_role}
     
+  - import_role:
+      name: ${iptables_role}
+
   - import_role:
       name: ${wireguard_spoke_role}
 

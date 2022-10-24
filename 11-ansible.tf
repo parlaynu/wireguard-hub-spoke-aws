@@ -14,6 +14,7 @@ resource "local_file" "run_playbook" {
 resource "local_file" "playbook" {
   content = templatefile("templates/ansible/playbook.yml.tpl", {
       gateway_role = local.gateway_role,
+      iptables_role = local.iptables_role,
       stubby_role = local.stubby_role,
       wireguard_hub_role = local.wireguard_hub_role,
       wireguard_spoke_role = local.wireguard_spoke_role
@@ -27,8 +28,8 @@ resource "local_file" "playbook" {
 resource "local_file" "hostvars_hub" {
 
   content = templatefile("templates/ansible/hostvars_hub.yml.tpl", {
-    server_name      = var.hub_name,
-    server_ifname    = var.hub_instance_ifname
+    host_name      = var.hub_name,
+    host_ifname    = var.hub_instance_ifname
     public_ip        = aws_instance.hub.public_ip,
     private_ip       = aws_instance.hub.private_ip
     cidr_block       = aws_vpc.hub.cidr_block
@@ -60,7 +61,6 @@ resource "local_file" "hostvars_spoke" {
 
   content = templatefile("templates/ansible/hostvars_spoke.yml.tpl", {
     host_name = each.key
-    host_gateway = each.value.net_gateway
     host_ifname = each.value.ifname
     host_ip = each.value.access_ip
     
@@ -69,7 +69,6 @@ resource "local_file" "hostvars_spoke" {
     vpn_ip = local.vpn_spoke_ips[each.key],
     vpn_private_key = wireguard_asymmetric_key.vpn_spokes[each.key].private_key,
 
-    vpn_hub_vpn_ip = local.vpn_hub_ip
     vpn_hub_endpoint = aws_instance.hub.public_ip,
     vpn_hub_port = var.vpn_port,
     vpn_hub_public_key = wireguard_asymmetric_key.vpn_hub.public_key,

@@ -1,6 +1,6 @@
 ---
-server_name: ${server_name}
-server_ifname: ${server_ifname}
+host_name: ${host_name}
+host_ifname: ${host_ifname}
 public_ip: ${public_ip}
 private_ip: ${private_ip}
 cidr_block: ${cidr_block}

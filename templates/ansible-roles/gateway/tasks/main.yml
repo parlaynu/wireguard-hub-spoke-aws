@@ -1,19 +1,14 @@
-## install packages
+## set the hostname
 
-- name: install net-tools
-  apt:
-    name: net-tools
-    state: present
+- name: set hostname
+  hostname:
+    name: '{{ host_name }}'
 
-- name: install dnsutils
-  apt:
-    name: dnsutils
-    state: present
-
-- name: install traceroute
-  apt:
-    name: traceroute
-    state: present
+- name: update hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127.0.1.1'
+    line: '127.0.1.1    {{ host_name }}'
 
 ## configure as a router
 
@@ -42,5 +37,24 @@
     name: net.ipv4.conf.all.send_redirects
     value: 0
 
+## install packages
 
+- name: update package cache
+  apt:
+    update_cache: true
+    cache_valid_time: 43200
 
+- name: install net-tools
+  apt:
+    name: net-tools
+    state: present
+
+- name: install dnsutils
+  apt:
+    name: dnsutils
+    state: present
+
+- name: install traceroute
+  apt:
+    name: traceroute
+    state: present
