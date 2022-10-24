@@ -1,7 +1,7 @@
 ---
 - hosts: hub
   become: yes
-  gather_facts: no
+  gather_facts: yes
   
   vars:
     ansible_python_interpreter: "/usr/bin/env python3"
@@ -19,9 +19,12 @@
   - import_role:
       name: ${wireguard_hub_role}
 
+  - import_role:
+      name: ${frrouting_role}
+
 - hosts: spokes
   become: yes
-  gather_facts: no
+  gather_facts: yes
   
   vars:
     ansible_python_interpreter: "/usr/bin/env python3"
@@ -36,3 +39,5 @@
   - import_role:
       name: ${wireguard_spoke_role}
 
+  - import_role:
+      name: ${frrouting_role}

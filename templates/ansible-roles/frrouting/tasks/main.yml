@@ -1,0 +1,18 @@
+- name: add frr repository keys
+  ansible.builtin.apt_key:
+    url: https://deb.frrouting.org/frr/keys.asc
+    state: present
+
+- name: add frr repository to sources list
+  ansible.builtin.apt_repository:
+    repo: deb https://deb.frrouting.org/frr {{ ansible_distribution_release }} frr-stable
+    state: present
+    update_cache: yes
+
+- name: install frr
+  ansible.builtin.apt:
+    pkg: 
+    - frr
+    - frr-pythontools
+    state: present
+

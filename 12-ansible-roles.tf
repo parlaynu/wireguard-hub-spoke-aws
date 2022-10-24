@@ -4,6 +4,7 @@ locals {
   stubby_role = "stubby"
   wireguard_hub_role = "wireguard_hub"
   wireguard_spoke_role = "wireguard_spoke"
+  frrouting_role = "frrouting"
 }
 
 resource "template_dir" "gateway" {
@@ -37,6 +38,13 @@ resource "template_dir" "wireguard_hub" {
 resource "template_dir" "wireguard_spoke" {
   source_dir      = "templates/ansible-roles/${local.wireguard_spoke_role}"
   destination_dir = "local/ansible/roles/${local.wireguard_spoke_role}"
+
+  vars = {}
+}
+
+resource "template_dir" "frrouting" {
+  source_dir      = "templates/ansible-roles/${local.frrouting_role}"
+  destination_dir = "local/ansible/roles/${local.frrouting_role}"
 
   vars = {}
 }

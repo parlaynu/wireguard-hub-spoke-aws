@@ -17,7 +17,8 @@ resource "local_file" "playbook" {
       iptables_role = local.iptables_role,
       stubby_role = local.stubby_role,
       wireguard_hub_role = local.wireguard_hub_role,
-      wireguard_spoke_role = local.wireguard_spoke_role
+      wireguard_spoke_role = local.wireguard_spoke_role,
+      frrouting_role = local.frrouting_role,
     })
   filename = "local/ansible/playbook.yml"
 }
