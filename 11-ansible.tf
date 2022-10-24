@@ -68,6 +68,7 @@ resource "local_file" "hostvars_spoke" {
     vpn_netlen = split("/", var.vpn_cidr_block)[1],
     vpn_ip = local.vpn_spoke_ips[each.key],
     vpn_private_key = wireguard_asymmetric_key.vpn_spokes[each.key].private_key,
+    vpn_keepalive_interval = each.value.keepalive_interval
 
     vpn_hub_endpoint = aws_instance.hub.public_ip,
     vpn_hub_port = var.vpn_port,

@@ -7,12 +7,14 @@ spokes = {
     ifname = "eth0"
     username = "pi"
     ssh_key_file = "~/.ssh/spoke1"
+    keepalive_interval = 0
   },
   spoke2 = {
     access_ip = "Y.Y.Y.Y"
     ifname = "eth0"
     username = "ubuntu"
     ssh_key_file = "~/.ssh/spoke2"
+    keepalive_interval = 25
   }
 }
 
