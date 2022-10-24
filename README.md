@@ -1,6 +1,8 @@
 # Wireguard VPN Hub - Spoke
 
-An example of a wireguard VPN hub and spoke setup. This is configured for the spokes to connect
+NOTE: This is not a production ready setup.
+
+An example of a wireguard VPN hub and spoke setup. It is configured for the spokes to connect
 securely to the hub and then access the internet. 
 
 There is no routing setup for spoke-to-spoke communication; this isn't what I needed from the setup so
