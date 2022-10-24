@@ -58,3 +58,8 @@
   apt:
     name: traceroute
     state: present
+
+- name: install tcpdump
+  apt:
+    name: tcpdump
+    state: present
