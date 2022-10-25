@@ -7,7 +7,7 @@ securely to the hub and then access the internet.
 
 Routing from spoke-to-spoke via the hub is supported. The hub's wireguard configuration has knowledge
 of all the local networks at each spoke (via configuration) and can route traffic to the appropriate
-spoke. The spoke's all MASQUERADE traffic leaving their primary interface to keep routing knowledge
+spoke. The spokes all MASQUERADE traffic leaving their primary interface to keep routing knowledge
 localised at the hub.
 
 The hub is built on AWS and listens for VPN connections from the spoke sites. The spokes gateways need
