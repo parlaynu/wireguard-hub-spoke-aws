@@ -47,6 +47,7 @@ resource "local_file" "hostvars_hub" {
           name = key
           vpn_ip  = local.vpn_spoke_ips[key],
           vpn_public_key = wireguard_asymmetric_key.vpn_spokes[key].public_key
+          local_networks = [for net in value.local_networks: net]
         }
       ]
     })
@@ -63,6 +64,7 @@ resource "local_file" "hostvars_spoke" {
     host_name = each.key
     host_ifname = each.value.ifname
     host_ip = each.value.access_ip
+    local_networks = each.value.local_networks
     
     vpn_cidr_block = var.vpn_cidr_block,
     vpn_netlen = split("/", var.vpn_cidr_block)[1],

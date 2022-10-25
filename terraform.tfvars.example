@@ -8,6 +8,7 @@ spokes = {
     username = "pi"
     ssh_key_file = "~/.ssh/spoke1"
     keepalive_interval = 0
+    local_networks = ["X.X.X.0/24"]
   },
   spoke2 = {
     access_ip = "Y.Y.Y.Y"
@@ -15,6 +16,7 @@ spokes = {
     username = "ubuntu"
     ssh_key_file = "~/.ssh/spoke2"
     keepalive_interval = 25
+    local_networks = ["Y.Y.Y.0/24"]
   }
 }
 

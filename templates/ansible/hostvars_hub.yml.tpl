@@ -16,6 +16,10 @@ spokes:
 - name: ${spoke.name}
   vpn_ip: ${spoke.vpn_ip}
   vpn_public_key: ${spoke.vpn_public_key}
+  local_networks:
+%{for net in spoke.local_networks ~}
+  - ${net}
+%{ endfor ~}
 %{ endfor ~}
 
 stubby_upstream_servers:
@@ -24,4 +28,3 @@ stubby_upstream_servers:
   tls_auth_name: ${upstream.tls_auth_name}
 %{ endfor ~}
 
-router_priority: 127

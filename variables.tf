@@ -70,6 +70,7 @@ variable "spokes" {
     username = string
     ssh_key_file = string
     keepalive_interval = number
+    local_networks = list(string)
     }))
   default = {
     spoke1 = {
@@ -78,6 +79,7 @@ variable "spokes" {
       username = "ubuntu"
       ssh_key_file = "~/.ssh/spoke1"
       keepalive_interval = 0    # 0 - disables persistent keepalive
+      local_networks = ["192.168.0.0/24"]
     },
     spoke2 = {
       access_ip = "192.168.10.11"
@@ -85,6 +87,7 @@ variable "spokes" {
       username = "ubuntu"
       ssh_key_file = "~/.ssh/spoke2"
       keepalive_interval = 25   # 25 - reasonable value according to wireguard documentation
+      local_networks = ["192.168.10.0/24"]
     }
   }
 }
