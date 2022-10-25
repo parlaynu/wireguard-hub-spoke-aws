@@ -5,8 +5,10 @@ NOTE: This is not a production ready setup.
 An example of a wireguard VPN hub and spoke setup. It is configured for the spokes to connect
 securely to the hub and then access the internet. 
 
-There is no routing setup for spoke-to-spoke communication; this isn't what I needed from the setup so
-haven't built it or tested it. It's quite possibly a simple thing to add.
+Routing from spoke-to-spoke via the hub is supported. The hub's wireguard configuration has knowledge
+of all the local networks at each spoke (via configuration) and can route traffic to the appropriate
+spoke. The spoke's all MASQUERADE traffic leaving their primary interface to keep routing knowledge
+localised at the hub.
 
 The hub is built on AWS and listens for VPN connections from the spoke sites. The spokes gateways need
 to be built outside this project and configured to the point where ssh access using a private key works.
