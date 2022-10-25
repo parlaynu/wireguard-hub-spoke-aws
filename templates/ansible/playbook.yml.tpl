@@ -19,9 +19,6 @@
   - import_role:
       name: ${wireguard_hub_role}
 
-  - import_role:
-      name: ${frrouting_role}
-
 - hosts: spokes
   become: yes
   gather_facts: yes
@@ -39,5 +36,3 @@
   - import_role:
       name: ${wireguard_spoke_role}
 
-  - import_role:
-      name: ${frrouting_role}

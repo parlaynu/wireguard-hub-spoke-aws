@@ -12,3 +12,5 @@ vpn_keepalive_interval: ${vpn_keepalive_interval}
 vpn_hub_endpoint: ${vpn_hub_endpoint}
 vpn_hub_port: ${vpn_hub_port}
 vpn_hub_public_key: ${vpn_hub_public_key}
+
+router_priority: 63

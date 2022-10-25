@@ -23,3 +23,5 @@ stubby_upstream_servers:
 - ip_address: ${upstream.ip_address}
   tls_auth_name: ${upstream.tls_auth_name}
 %{ endfor ~}
+
+router_priority: 127
