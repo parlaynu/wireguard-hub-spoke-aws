@@ -1,0 +1,29 @@
+## install stubby
+
+- name: install stubby
+  apt:
+    name: stubby
+    state: present
+
+## install the configuration file
+
+- name: install stubby config
+  template:
+    src: stubby.yml
+    dest: /etc/stubby/stubby.yml
+    owner: root
+    group: stubby
+    mode: 0644
+  notify:
+    - restart stubby
+
+## start the service
+
+- name: start stubby
+  systemd:
+    name: stubby
+    daemon_reload: yes
+    enabled: yes
+    state: started
+
+

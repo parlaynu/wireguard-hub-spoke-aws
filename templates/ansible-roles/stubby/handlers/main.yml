@@ -1,0 +1,10 @@
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: restart stubby
+  systemd:
+    name: stubby
+    state: restarted
+

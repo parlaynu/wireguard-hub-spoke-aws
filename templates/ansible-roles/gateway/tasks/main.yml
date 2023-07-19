@@ -1,0 +1,55 @@
+## set the hostname
+
+- name: set hostname
+  hostname:
+    name: '{{ host_name }}'
+
+- name: update hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127.0.1.1'
+    line: '127.0.1.1    {{ host_name }}'
+
+## configure as a router
+
+- name: enable packet forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+
+- name: enable secure redirects
+  sysctl:
+    name: net.ipv4.conf.all.secure_redirects
+    value: 1
+
+- name: disable accept redirects
+  sysctl:
+    name: net.ipv4.conf.all.accept_redirects
+    value: 0
+
+- name: disable source routing
+  sysctl:
+    name: net.ipv4.conf.all.accept_source_route
+    value: 0
+
+- name: disable send redirects
+  sysctl:
+    name: net.ipv4.conf.all.send_redirects
+    value: 0
+
+## install packages
+
+- name: update package cache
+  apt:
+    update_cache: true
+    cache_valid_time: 43200
+
+- name: install network packages
+  apt:
+    pkg:
+    - net-tools
+    - dnsutils
+    - traceroute
+    - tcpdump
+    state: present
+

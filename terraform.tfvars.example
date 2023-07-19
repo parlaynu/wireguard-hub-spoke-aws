@@ -1,0 +1,22 @@
+
+aws_profile = "your-aws-profile"
+
+spokes = {
+  spoke1 = {
+    access_ip = "X.X.X.X"
+    ifname = "eth0"
+    username = "pi"
+    ssh_key_file = "~/.ssh/spoke1"
+    keepalive_interval = 0
+    local_networks = ["X.X.X.0/24"]
+  },
+  spoke2 = {
+    access_ip = "Y.Y.Y.Y"
+    ifname = "eth0"
+    username = "ubuntu"
+    ssh_key_file = "~/.ssh/spoke2"
+    keepalive_interval = 25
+    local_networks = ["Y.Y.Y.0/24"]
+  }
+}
+
